@@ -8,7 +8,7 @@ import Header from "../Header/Header";
 import useForecast from "../../Hooks/useForecast";
 
 const Page = () => {
- 
+ useForecast()
 
   return (
     <Fragment>
