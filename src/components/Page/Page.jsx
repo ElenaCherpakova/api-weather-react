@@ -8,10 +8,11 @@ import Header from "../Header/Header";
 import useForecast from "../../Hooks/useForecast";
 
 const Page = () => {
-  const [isError, isLoading, forecast] = useForecast();
+  const {isError, isLoading, forecast} = useForecast();
 
   const onSubmit = (value) => {
-    console.log(value);
+    console.log({ value });
+    
   };
 
   return (
@@ -19,7 +20,7 @@ const Page = () => {
       <Header />
       <div className={styles.box}>
         {!isLoading && <Form submitSearch={onSubmit} />}
-        {isError && <Error message={isError}/>}
+        {isError && <Error message={isError} />}
         {isLoading && <Loader />}
       </div>
       {forecast && <Forecast />}
