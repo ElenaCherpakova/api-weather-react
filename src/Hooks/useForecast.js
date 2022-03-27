@@ -18,18 +18,19 @@ const useForecast = () => {
       params: { query: location },
     });
     //2. get weather
-
     if (!data || data.length === 0) {
       setError("There is no such location");
+      setLoading(false);
       return;
     }
-    return data;
+    return data[0];
   };
 
   const getForecastData = async (woeid) => {
     const { data } = await axios(`${REQUEST_URL}/${woeid}`);
     if (!data || data.length === 0) {
       setError("Something went wrong");
+      setLoading(false);
       return;
     }
     return data;
@@ -37,10 +38,12 @@ const useForecast = () => {
 
   //call API
   const submitRequest = async (location) => {
-    setLoading(true)
-    setError(false)
+    setLoading(true);
+    setError(false);
     const response = await getWoeid(location);
-    const data = await getForecastData(response[0].woeid);
+    if (!response?.woeid) return;
+
+    const data = await getForecastData(response.woeid);
     console.log({ data });
   };
   return { isError, isLoading, forecast, submitRequest };

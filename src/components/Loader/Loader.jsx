@@ -8,12 +8,9 @@ const Loader = () => (
       version="1.1"
       id="L4"
       xmlns="http://www.w3.org/2000/svg"
-     
       x="0px"
       y="0px"
       viewBox="0 0 50 100"
-      enable-background="new 0 0 0 0"
-   
     >
       <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
         <animate
@@ -42,7 +39,6 @@ const Loader = () => (
           begin="0.3"
         />
       </circle>
-  
     </svg>
   </div>
 );

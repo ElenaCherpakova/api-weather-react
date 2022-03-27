@@ -2,13 +2,11 @@ import React from "react";
 import styles from "./Error.module.css";
 import PropTypes from "prop-types";
 
-function Error({ message }) {
-  return (
-    <div className={`${styles.error} alert position-absolute`} role="alert">
-      {message}
-    </div>
-  );
-}
+const Error = ({ message }) => (
+  <div className={`${styles.error} alert position-absolute`} role="alert">
+    {message}
+  </div>
+);
 
 Error.propTypes = {
   message: PropTypes.string,
