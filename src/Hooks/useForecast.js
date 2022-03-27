@@ -10,8 +10,7 @@ const useForecast = () => {
   const [isLoading, setLoading] = useState(false);
   const [forecast, setForecast] = useState(null);
 
-
-  //Refactoring: 
+  //Refactoring:
 
   const getWoeid = async (location) => {
     //1. get woeid (where on earth id)
@@ -25,21 +24,24 @@ const useForecast = () => {
       return;
     }
     return data;
-  }
+  };
 
   const getForecastData = async (woeid) => {
-    const { data } = await axios(`${REQUEST_URL}/${woeid}`)
+    const { data } = await axios(`${REQUEST_URL}/${woeid}`);
     if (!data || data.length === 0) {
       setError("Something went wrong");
       return;
     }
-    return data
-  }
+    return data;
+  };
 
+  //call API
   const submitRequest = async (location) => {
-    const response = await getWoeid(location)
-    const data = await getForecastData(response[0].woeid)
-    console.log({data})
+    setLoading(true)
+    setError(false)
+    const response = await getWoeid(location);
+    const data = await getForecastData(response[0].woeid);
+    console.log({ data });
   };
   return { isError, isLoading, forecast, submitRequest };
 };
