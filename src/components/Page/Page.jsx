@@ -5,6 +5,7 @@ import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import Forecast from "../Forecast/Forecast";
 import Header from "../Header/Header";
+import useForecast from "../../Hooks/useForecast";
 
 const Page = () => {
  
