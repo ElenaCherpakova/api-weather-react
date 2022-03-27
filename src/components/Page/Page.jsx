@@ -18,9 +18,9 @@ const Page = () => {
     <Fragment>
       <Header />
       <div className={styles.box}>
-        {!isLoading && <Form submitSearch={onSubmit}/> }
-        {isError && <Error />}
-        {isLoading && <Loader message={isError} />}
+        {!isLoading && <Form submitSearch={onSubmit} />}
+        {isError && <Error message={isError}/>}
+        {isLoading && <Loader />}
       </div>
       {forecast && <Forecast />}
     </Fragment>

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const useForecast = () => {
   const [isError, setIsErrot] = useState(false);
   const [isLoading, setLoading] = useState(false);
