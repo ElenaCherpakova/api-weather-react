@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
 
-function Form() {
+function Form({submitSearch}) {
   const [location, setLocation] = useState("");
 
   const onSubmit = (e) => {
     e.preventDefault();
     if (!location || location === "") return;
-    setLocation("");
+    submitSearch(location);
   };
 
   return (

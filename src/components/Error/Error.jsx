@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+// import propTypes from "prop-types";
 
-function Error() {
+function Error({ message }) {
   return (
-    <div>Error</div>
-  )
+    <div className={`{styles.error} alert position-absolute`} role="alert">
+      {message}
+    </div>
+  );
 }
 
-export default Error
+// Error.propTypes = {
+//   message: PropTypes.string,
+// };
+
+// Error.defaultProps = {
+//   message: "An error occurred",
+// };
+
+export default Error;

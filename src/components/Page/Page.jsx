@@ -8,17 +8,21 @@ import Header from "../Header/Header";
 import useForecast from "../../Hooks/useForecast";
 
 const Page = () => {
- useForecast()
+  const [isError, isLoading, forecast] = useForecast();
+
+  const onSubmit = (value) => {
+    console.log(value);
+  };
 
   return (
     <Fragment>
       <Header />
       <div className={styles.box}>
-        <Form />
-        {/* <Error />
-        <Loader />
-        <Forecast /> */}
+        {!isLoading && <Form submitSearch={onSubmit}/> }
+        {isError && <Error />}
+        {isLoading && <Loader message={isError} />}
       </div>
+      {forecast && <Forecast />}
     </Fragment>
   );
 };
