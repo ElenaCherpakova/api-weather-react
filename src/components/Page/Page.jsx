@@ -8,11 +8,10 @@ import Header from "../Header/Header";
 import useForecast from "../../Hooks/useForecast";
 
 const Page = () => {
-  const {isError, isLoading, forecast} = useForecast();
+  const { isError, isLoading, forecast, submitRequest } = useForecast();
 
   const onSubmit = (value) => {
-    console.log({ value });
-    
+    submitRequest(value);
   };
 
   return (
