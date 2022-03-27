@@ -4,18 +4,19 @@ import Form from "../Form/Form";
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import Forecast from "../Forecast/Forecast";
-
 import Header from "../Header/Header";
 
 const Page = () => {
+ 
+
   return (
     <Fragment>
       <Header />
       <div className={styles.box}>
         <Form />
-        <Error />
+        {/* <Error />
         <Loader />
-        <Forecast />
+        <Forecast /> */}
       </div>
     </Fragment>
   );
