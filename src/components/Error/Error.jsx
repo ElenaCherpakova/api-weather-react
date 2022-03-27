@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Error.module.css";
-// import propTypes from "prop-types";
+import PropTypes from "prop-types";
 
 function Error({ message }) {
   return (
@@ -10,12 +10,12 @@ function Error({ message }) {
   );
 }
 
-// Error.propTypes = {
-//   message: PropTypes.string,
-// };
+Error.propTypes = {
+  message: PropTypes.string,
+};
 
-// Error.defaultProps = {
-//   message: "An error occurred",
-// };
+Error.defaultProps = {
+  message: "An error occurred",
+};
 
 export default Error;

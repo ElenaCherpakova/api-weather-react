@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
+import PropTypes from "prop-types";
 
 const Form = ({ submitSearch }) => {
   const [location, setLocation] = useState("");
@@ -27,6 +28,10 @@ const Form = ({ submitSearch }) => {
       </button>
     </form>
   );
+};
+
+Form.propTypes = {
+  submitSearch: PropTypes.func.isRequired,
 };
 
 export default Form;
