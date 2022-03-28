@@ -16,7 +16,7 @@
   background-image: var(--gradient);
   background-size: cover;
   border-radius: var(--main-border-radius);
-  opacity: 0.7;
+  opacity: 0.3;
 }
 
 .img {

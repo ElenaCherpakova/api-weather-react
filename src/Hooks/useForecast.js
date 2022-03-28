@@ -1,70 +1,71 @@
-import { useState } from "react";
-import axios from "axios";
-import getUpcomingDaysForecast from "../helpers/getUpcomingDaysForecast";
-import getCurrentDayForecast from "../helpers/getCurrentDayForecast";
-import getCurrentDayDetailedForecast from "../helpers/getCurrentDayDetailedForecast";
+import { useState } from 'react';
+import axios from 'axios';
 
-const BASE_URL = "https://www.metaweather.com/api/location";
+import getCurrentDayForecast from '../helpers/getCurrentDayForecast';
+import getCurrentDayDetailedForecast from '../helpers/getCurrentDayDetailedForecast';
+import getUpcomingDaysForecast from '../helpers/getUpcomingDaysForecast';
+
+const BASE_URL = 'https://www.metaweather.com/api/location';
 const CROSS_DOMAIN = "https://stormy-sands-05530.herokuapp.com";
 const REQUEST_URL = `${CROSS_DOMAIN}/${BASE_URL}`;
 
 const useForecast = () => {
-  const [isError, setError] = useState(false);
-  const [isLoading, setLoading] = useState(false);
-  const [forecast, setForecast] = useState(null);
+    const [isError, setError] = useState(false);
+    const [isLoading, setLoading] = useState(false);
+    const [forecast, setForecast] = useState(null);
 
-  //Refactoring:
+    const getWoeid = async location => {
+        const { data } = await axios(`${REQUEST_URL}/search`, { params: { query: location } });
 
-  const getWoeid = async (location) => {
-    //1. get woeid (where on earth id)
-    const { data } = await axios(`${REQUEST_URL}/search`, {
-      params: { query: location },
-    });
-    //2. get weather
-    if (!data || data.length === 0) {
-      setError("There is no such location");
-      setLoading(false);
-      return;
-    }
-    return data[0];
-  };
+        if (!data || data.length === 0) {
+            setError('There is no such location');
+            setLoading(false);
+            return;
+        }
 
-  const getForecastData = async (woeid) => {
-    const { data } = await axios(`${REQUEST_URL}/${woeid}`);
-    if (!data || data.length === 0) {
-      setError("Something went wrong");
-      setLoading(false);
-      return;
-    }
-    return data;
-  };
+        return data[0];
+    };
 
-  const gatheredData = (data) => {
-    const currentDay = getCurrentDayForecast(
-      data.consolidated_weather[0],
-      data.title
-    );
-    const currentDayDetails = getCurrentDayDetailedForecast(
-      data.consolidated_weather[0]
-    );
-    const upcomingDays = getUpcomingDaysForecast(data.consolidated_weather);
+    const getForecastData = async woeid => {
+        const { data } = await axios(`${REQUEST_URL}/${woeid}`);
 
-    setForecast({ currentDay, currentDayDetails, upcomingDays });
-    setLoading(false)
-  };
+        if (!data || data.length === 0) {
+            setError('Something went wrong');
+            setLoading(false);
+            return;
+        }
 
-  //call API
-  const submitRequest = async (location) => {
-    setLoading(true);
-    setError(false);
-    const response = await getWoeid(location);
-    if (!response?.woeid) return;
+        return data;
+    };
 
-    const data = await getForecastData(response.woeid);
-    if (!data) return;
-    gatheredData(data)
-  };
-  return { isError, isLoading, forecast, submitRequest };
+    const gatherForecastData = data => {
+        const currentDay = getCurrentDayForecast(data.consolidated_weather[0], data.title);
+        const currentDayDetails = getCurrentDayDetailedForecast(data.consolidated_weather[0]);
+        const upcomingDays = getUpcomingDaysForecast(data.consolidated_weather);
+
+        setForecast({ currentDay, currentDayDetails, upcomingDays });
+        setLoading(false);
+    };
+
+    const submitRequest = async location => {
+        setLoading(true);
+        setError(false);
+
+        const response = await getWoeid(location);
+        if (!response?.woeid) return;
+
+        const data = await getForecastData(response.woeid);
+        if (!data) return;
+
+        gatherForecastData(data);
+    };
+
+    return {
+        isError,
+        isLoading,
+        forecast,
+        submitRequest,
+    };
 };
 
 export default useForecast;

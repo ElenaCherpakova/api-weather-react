@@ -1,5 +1,6 @@
 .card {
   border-radius: var(--main-border-radius);
+  opacity:0.2;
 }
 
 .box {
@@ -11,4 +12,6 @@
   width: 85%;
   max-width: 675px;
   min-height: 300px;
+
+  
 }
