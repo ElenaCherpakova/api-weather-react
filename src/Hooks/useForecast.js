@@ -44,6 +44,7 @@ const useForecast = () => {
     if (!response?.woeid) return;
 
     const data = await getForecastData(response.woeid);
+    if (!data) return;
     console.log({ data });
   };
   return { isError, isLoading, forecast, submitRequest };
