@@ -1,35 +1,64 @@
 .card {
-  border-radius: var(--main-border-radius);
-}
+    border-radius: var(--main-border-radius);
+  }
+  
+  .cardInner {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    height: 360px;
+    justify-content: space-around;
+    align-items: center;
 
-.cardInner {
-  z-index: 1;
-  height: 300px;
-}
+    
+  }
+  
+  .gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    opacity: 0.4;
+  }
+  
+  .img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('./assets/mountain.jpg');
+    background-size: cover;
+    border-radius: var(--main-border-radius);
+  }
+  
+  .weekday {
+    width: 200px;
 
-.gradient {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: var(--gradient);
-  background-size: cover;
-  border-radius: var(--main-border-radius);
-  opacity: 0.3;
-}
+  }
+  
+  .container {
+    display:flex;
+    justify-content:center;
+  }
 
-.img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: url('./assets/mountain.jpg');
-  background-size: cover;
-  border-radius: var(--main-border-radius);
-}
+  .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 
-.weekday {
-  width: 100px;
-}
+  .dayForecast{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cityLocation{
+    font-size:23px;
+  }
+  .date {
+    font-size:25px;
+  }
