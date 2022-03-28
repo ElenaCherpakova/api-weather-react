@@ -1,5 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
+import getUpcomingDaysForecast from "../helpers/getUpcomingDaysForecast";
+import getCurrentDayForecast from "../helpers/getCurrentDayForecast";
+import getCurrentDayDetailedForecast from "../helpers/getCurrentDayDetailedForecast";
 
 const BASE_URL = "https://www.metaweather.com/api/location";
 const CROSS_DOMAIN = "https://stormy-sands-05530.herokuapp.com";
@@ -36,6 +39,20 @@ const useForecast = () => {
     return data;
   };
 
+  const gatheredData = (data) => {
+    const currentDay = getCurrentDayForecast(
+      data.consolidated_weather[0],
+      data.title
+    );
+    const currentDayDetails = getCurrentDayDetailedForecast(
+      data.consolidated_weather[0]
+    );
+    const upcomingDays = getUpcomingDaysForecast(data.consolidated_weather);
+
+    setForecast({ currentDay, currentDayDetails, upcomingDays });
+    setLoading(false)
+  };
+
   //call API
   const submitRequest = async (location) => {
     setLoading(true);
@@ -45,7 +62,7 @@ const useForecast = () => {
 
     const data = await getForecastData(response.woeid);
     if (!data) return;
-    console.log({ data });
+    gatheredData(data)
   };
   return { isError, isLoading, forecast, submitRequest };
 };
