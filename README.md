@@ -1,23 +1,21 @@
-# Weather Forecast
+<h1> Weather Forecast <h1/>
 
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
+# Running the project
+* Clone the repository onto your local device.
+* Install dependencies using the `npm install` command in the client folder.
+* Start the web server using the `npm start` command. 
+  The app will be served at http://localhost:3000/
+* Go to http://localhost:3000/ in your browser.
+  
+  
+## What Has Been Learnt
+* learnt how to use Hooks in ReactJS, 
+* How to create own custom Hook
+* Create a cross domain for weather API bypass cors
+* Fetch API
+  
 ### Dependencies
 
 * React
-* Axio
+* Axios
 * Bootstrap
