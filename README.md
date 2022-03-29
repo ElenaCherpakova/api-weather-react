@@ -1,6 +1,6 @@
-<h3> Weather Forecast <h3/>
+<h2> Weather Forecast <h2/>
 
-# Running the project
+## Running the project
   
 * Clone the repository onto your local device.
 * Install dependencies using the `npm install` command in the client folder.
