@@ -16,9 +16,9 @@
   
   
 ### What Has Been Learnt
-* How to use Hooks in ReactJS, 
-* How to create own custom Hook
-* Create a cross domain for weather API bypass cors
+* How to use Hooks in React 
+* How to create own custom Hooks
+* Create a cross domain for weather API bypass CORS
 * Fetch API
   
 ### Dependencies
