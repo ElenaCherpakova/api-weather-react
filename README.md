@@ -2,7 +2,7 @@
 
 
 <div align="center">
-<img src="https://github.com/ElenaCherpakova/api-weather-react/blob/c1dcbd9b3b99cbbe70fbec3335c6ff43b13da39d/public/photos/photoTwo.png" width="370"/> <img src="https://github.com/ElenaCherpakova/api-weather-react/blob/c1dcbd9b3b99cbbe70fbec3335c6ff43b13da39d/public/photos/photoOne.png" width="400"/> 
+<img src="https://github.com/ElenaCherpakova/api-weather-react/blob/c1dcbd9b3b99cbbe70fbec3335c6ff43b13da39d/public/photos/photoTwo.png" width="360"/> <img src="https://github.com/ElenaCherpakova/api-weather-react/blob/c1dcbd9b3b99cbbe70fbec3335c6ff43b13da39d/public/photos/photoOne.png" width="400"/> 
 </div>
  
 
