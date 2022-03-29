@@ -1,4 +1,4 @@
-<h2> Weather Forecast <h2/>
+## Weather Forecast 
 
 ## Running the project
   
