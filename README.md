@@ -1,4 +1,4 @@
-## Weather Forecast 
+<h2 align="center">Weather Forecast</h2>
 
 
 <div align="center">
