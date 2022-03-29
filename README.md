@@ -1,4 +1,4 @@
-<h2 align="center">Weather Forecast</h2>
+<h1 align="center">Weather Forecast</h1>
 
 
 <div align="center">
