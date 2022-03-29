@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,900&display=swap');
 
 :root {
-    --gradient: linear-gradient(135deg, #72edf2 10%, #5151e5 100%);
-    --bg-color: #081a35d4;
-    --bg-color--card: #081a35d4;
+    --gradient: linear-gradient(135deg, #ca8551 10%, #00121b 60%, #00242f 100% );
+    --bg-color--card: #0c0b00ac;
 
     --main-text-color: #ffffff;
 
@@ -15,6 +14,8 @@ body {
     width: 100%;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
-    background-color: #0f274aa8;
+    background-color: #a5992d25;
+    background-image: url("../src/components/CurrentDay/assets/mountain.jpg");
+    background-size: cover;
     color: white;
 }

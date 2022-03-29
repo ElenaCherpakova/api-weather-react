@@ -12,12 +12,12 @@ import styles from './Forecast.module.css';
 const Forecast = ({ forecast }) => (
     <Container className={styles.box}>
         <Row>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={12}>
                 <div className={styles.card}>
                     <CurrentDay {...forecast.currentDay} />
                 </div>
             </Col>
-            <Col xs={12} md={8} className="d-flex flex-column justify-content-between">
+            <Col xs={12} md={12} className="d-flex flex-column justify-content-center">
                 <CurrentDayDescription forecast={forecast.currentDayDetails} />
                 <UpcomingDaysForecast days={forecast.upcomingDays} />
             </Col>

@@ -23,16 +23,7 @@
     opacity: 0.4;
   }
   
-  .img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-image: url('./assets/mountain.jpg');
-    background-size: cover;
-    border-radius: var(--main-border-radius);
-  }
+
   
   .weekday {
     width: 200px;
