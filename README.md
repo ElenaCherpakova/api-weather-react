@@ -6,7 +6,7 @@
 </div>
  
 ### Link: 
-https://peppy-gumdrop-f6b7af.netlify.app/
+https://api-weather-react.netlify.app/
 
 ### Running the project
   
