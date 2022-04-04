@@ -4,7 +4,7 @@ import Form from "../Form/Form";
 import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
 import Forecast from "../Forecast/Forecast";
-import useForecast from "../../hooks/useForecast";
+import useForecast from "../../Hooks/useForecast";
 import styles from "./Page.module.css";
 
 export default function Page() {
