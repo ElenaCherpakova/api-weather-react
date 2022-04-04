@@ -3,7 +3,7 @@ import axios from "axios";
 
 import getCurrentDayForecast from "../helpers/getCurrentDayForecast";
 import getCurrentDayDetailedForecast from "../helpers/getCurrentDayDetailedForecast";
-import getUpcomingDaysForecast from "../helpers/getCurrentDayDetailedForecast";
+import getUpcomingDaysForecast from "../helpers/getUpcomingDaysForecast";
 
 const BASE_URL = "https://www.metaweather.com/api/location";
 const CROSS_DOMAIN = "https://stormy-sands-05530.herokuapp.com";
