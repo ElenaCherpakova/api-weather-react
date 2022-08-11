@@ -32,7 +32,6 @@ const useForecast = () => {
       setLoading(false);
       return;
     }
-    console.log({ data })
     return data;
   };
 
