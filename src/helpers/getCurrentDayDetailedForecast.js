@@ -1,32 +1,32 @@
-const currentDayForecast = data => [
+const currentDayForecast = (data) => [
     {
         name: 'predictability',
-        value: data.predictability,
-        unit: '%',
+        value: data.current.feels_like,
+        unit: '°C',
     },
     {
         name: 'humidity',
-        value: data.humidity,
+        value: data.current.humidity,
         unit: '%',
     },
     {
         name: 'wind',
-        value: Math.round(data.wind_speed),
+        value: Math.round(data.current.wind_speed),
         unit: 'km/h',
     },
     {
         name: 'air pressure',
-        value: data.air_pressure,
+        value: data.current.pressure,
         unit: 'mb',
     },
     {
         name: 'max temp',
-        value: Math.round(data.max_temp),
+        value: Math.round(data.daily[0].temp.max),
         unit: '°C',
     },
     {
         name: 'min temp',
-        value: Math.round(data.min_temp),
+        value: Math.round(data.daily[0].temp.min),
         unit: '°C',
     },
 ];

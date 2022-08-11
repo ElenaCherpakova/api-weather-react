@@ -1,16 +1,14 @@
 .card {
     border-radius: var(--main-border-radius);
   }
-  
+
   .cardInner {
     display: flex;
     flex-direction: column;
     z-index: 1;
-    height: 360px;
+    margin-top: 0.9rem;
     justify-content: space-around;
     align-items: center;
-
-    
   }
   
   .gradient {
@@ -49,7 +47,9 @@
 
   .cityLocation{
     font-size:23px;
+  
   }
   .date {
+ 
     font-size:25px;
   }

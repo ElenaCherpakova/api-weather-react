@@ -1,12 +1,13 @@
 import moment from 'moment';
 
-const getWeekday = date => moment(date).format('dddd').substring(0, 3);
-
 const getUpcomingDaysForecast = data =>
-    data.slice(1).map(day => ({
-        imgUrl: day.weather_state_abbr,
-        temperature: Math.round(day.max_temp),
-        weekday: getWeekday(day.applicable_date),
+    data.slice(1, 6).map((day, index) => ({
+        imgUrl: `${day.weather[0].icon}.png`,
+        temperature: Math.round(day.temp.max),
+        feels_like: Math.round(day.feels_like.day),
+        weekday: moment(new Date())
+            .add(index + 1, 'days')
+            .format('dddd'),
     }));
 
 export default getUpcomingDaysForecast;

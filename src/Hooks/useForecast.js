@@ -5,52 +5,47 @@ import getCurrentDayForecast from "../helpers/getCurrentDayForecast";
 import getCurrentDayDetailedForecast from "../helpers/getCurrentDayDetailedForecast";
 import getUpcomingDaysForecast from "../helpers/getUpcomingDaysForecast";
 
-const BASE_URL = "https://www.metaweather.com/api/location";
-const CROSS_DOMAIN = "https://stormy-sands-05530.herokuapp.com";
-const REQUEST_URL = `${CROSS_DOMAIN}/${BASE_URL}`;
+const GEO_URL = `http://api.openweathermap.org/geo/1.0/direct?q=`;
+const WEATHER_URL = `https://api.openweathermap.org/data/2.5/onecall?`;
 
 const useForecast = () => {
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [forecast, setForecast] = useState(null);
 
-  const getWoeid = async (location) => {
-    const { data } = await axios(`${REQUEST_URL}/search`, {
-      params: { query: location },
-    });
-
+  const getGeoData = async (location) => {
+    const { data } = await axios(`${GEO_URL}${location}&appid=${process.env.REACT_APP_WEATHER_API}`);
+ 
     if (!data || data.length === 0) {
       setError("There is no such location");
       setLoading(false);
       return;
     }
-
-    return data[0];
+    return data;
   };
 
-  const getForecastData = async (woeid) => {
-    const { data } = await axios(`${REQUEST_URL}/${woeid}`);
+  const getForecastData = async (coordinate) => {
+    const { data } = await axios(`${WEATHER_URL}lat=${coordinate[0].lat}&lon=${coordinate[0].lon}&units=metric&appid=${process.env.REACT_APP_WEATHER_API}`);
 
     if (!data || data.length === 0) {
       setError("Something went wrong");
       setLoading(false);
       return;
     }
-
+    console.log({ data })
     return data;
   };
 
-  const gatherForecastData = (data) => {
-    const currentDay = getCurrentDayForecast(
-      data.consolidated_weather[0],
-      data.title
-    );
-    const currentDayDetails = getCurrentDayDetailedForecast(
-      data.consolidated_weather[0]
-    );
-    const upcomingDays = getUpcomingDaysForecast(data.consolidated_weather);
+  const gatherForecastData = (data, location) => {
+    const currentDay = getCurrentDayForecast(data, location);
+    const currentDayDetails = getCurrentDayDetailedForecast(data);
+    const upcomingDays = getUpcomingDaysForecast(data.daily);
 
-    setForecast({ currentDay, currentDayDetails, upcomingDays });
+    setForecast({
+      currentDay,
+      currentDayDetails,
+      upcomingDays
+    });
     setLoading(false);
   };
 
@@ -58,13 +53,13 @@ const useForecast = () => {
     setLoading(true);
     setError(false);
 
-    const response = await getWoeid(location);
-    if (!response?.woeid) return;
+    const response = await getGeoData(location);
+    if (!response) return;
 
-    const data = await getForecastData(response.woeid);
+    const data = await getForecastData(response);
     if (!data) return;
 
-    gatherForecastData(data);
+    gatherForecastData(data,location);
   };
 
   return {
